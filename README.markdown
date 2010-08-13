@@ -16,6 +16,18 @@ Licensed under GPL
 
 ## INSTALLATION:
 
+	1. river implementation
+	2. create / edit / delete entity
+	3. nice url
+	4. menu && submenu implementation
+	5. plugin settings
+	6. widget
+	7. languages files
+	8. manifest
+	9. admin page
+	8. gallery / listing / full view 
+	9. css && js support
+
 ## Feedback
 
 We are relying on the [GitHub issues tracker][issues] linked from above for
