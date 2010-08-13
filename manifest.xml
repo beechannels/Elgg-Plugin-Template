@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+        <field key="author" value="OWNER_NAME" />
+        <field key="version" value="0.1" />
+        <field key="description" value="PLUGIN_DESCRIPTION" />
+        <field key="website" value="OWNER_WEBSITE" />
+        <field key="copyright" value="(C) COPYRIGHT_OWNER DEV_YEAR" />
+	<field key="licence" value="GNU Public License version 2" />
+</plugin_manifest>
