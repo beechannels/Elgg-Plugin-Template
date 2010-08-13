@@ -11,6 +11,13 @@
 	 * 
 	 */
 
-	echo elgg_echo('plugin_name:notfound:description');
-	 
+	if ($vars['full']) {
+		echo elgg_view("plugin_name/plugin_name_full",$vars);
+	} else {
+		if (get_input('search_viewtype') == "gallery") {
+			echo elgg_view('plugin_name/plugin_name_gallery',$vars); 				
+		} else {
+			echo elgg_view("plugin_name/plugin_name_listing",$vars);
+		}
+	}
 ?>

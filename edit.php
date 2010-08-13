@@ -14,6 +14,8 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		gatekeeper();
+		global $CONFIG;
+		set_context('plugin_name');
 		
 	// Get the current page's owner
 		$page_owner = page_owner_entity();
@@ -22,18 +24,20 @@
 			set_page_owner($_SESSION['guid']);
 		}
 		
+		$title = elgg_echo('plugin_name:add');
+		
 	// Get the entity, if it exists
 		$entity_guid = (int) get_input('guid', 0);
 		if ($entity_guid && ($entity = get_entity($entity_guid))) {
 			
 			if (!$entity->canEdit())
 				$entity = 0;
+			else
+				$title = elgg_echo('plugin_name:edit');	
 		}
-		
-		$title = elgg_echo('plugin_name:edit');
-		
+				
 		$area2 = elgg_view_title($title);
-		$area2 .= elgg_view("plugin_name/forms/edit", array('entity' => $entity));
+		$area2 .= elgg_view('input/form', array('action' => $CONFIG->wwwroot . "action/plugin_name/edit", 'body' => elgg_view("plugin_name/forms/edit", array('entity' => $entity))));
 		
 		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
 		

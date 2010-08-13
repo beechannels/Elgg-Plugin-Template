@@ -14,10 +14,11 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		global $CONFIG;
+		set_context('plugin_name');
 			
 		$title = elgg_echo('plugin_name');
 		$area2 = elgg_view_title($title);
-		$area2 .= list_entities('object', 'plugin_name_subtype');							
+		$area2 .= list_entities('object', 'plugin_name_subtype', 0, 10, false);							
 
 	// Display through the correct canvas area
 		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);

@@ -15,7 +15,7 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		global $CONFIG;
 		admin_gatekeeper();
-		set_context('admin')
+		set_context('admin');
 			
 		$title = elgg_echo('plugin_name:admin');
 		$area2 = elgg_view_title($title);

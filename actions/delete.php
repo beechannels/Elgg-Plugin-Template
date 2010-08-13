@@ -29,7 +29,7 @@
 					} else {
 						register_error(elgg_echo("plugin_name:notdeleted"));
 					}
-			// Forward to the main blog page
+			// Forward to the main plugin_name page
 					forward("pg/plugin_name/");
 			
 			}

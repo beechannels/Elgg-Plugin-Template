@@ -14,6 +14,7 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		global $CONFIG;
+		set_context('plugin_name');
 
 	// Get the specified entity
 		$entity_guid = (int) get_input('guid', 0);
@@ -35,18 +36,19 @@
 							
 	// Set the title appropriately
 		$title = $entity->title;
-
-	// Display through the correct canvas area
-		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
 			
 	// If we're not allowed to see the blog post
 		} else {
 			
 	// Display the 'post not found' page instead
-			$body = elgg_view("plugin_name/notfound");
 			$title = elgg_echo("plugin_name:notfound");
 			
+			$area2 = elgg_view_title($title);
+			$area2 .= elgg_view("plugin_name/notfound");
 		}
+		
+		// Display through the correct canvas area
+		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
 		
 	// Display page
 		page_draw($title,$body);

@@ -13,6 +13,7 @@
 	 	
 		function plugin_name_init() {
     		
+    		global $CONFIG;
     		
 			// add css
 				elgg_extend_view('css', 'plugin_name/css');
@@ -20,8 +21,11 @@
 			// add js
 				elgg_extend_view('js/initialise_elgg', 'plugin_name/js');
 				
+			// Set up menu
+				add_menu(elgg_echo('plugin_name'), $CONFIG->wwwroot . "pg/plugin_name/");	
+				
 			 // Register a page handler, so we can have nice URLs
-                register_page_handler('plugin_name','plugin_name_handler');
+                register_page_handler('plugin_name','plugin_name_page_handler');
                 
              // Register a URL handler for entity
                 register_entity_url_handler('plugin_name_url','object','plugin_name_subtype');
@@ -30,7 +34,11 @@
                 register_entity_type('object','plugin_name_subtype');		
 			
     		//add a widget
-			    add_widget_type('plugin_name',elgg_echo("plugin_name:title"),elgg_echo("plugin_name:description"));
+			    add_widget_type('plugin_name',elgg_echo("plugin_name:widget:title"),elgg_echo("plugin_name:widget:description"));
+			    
+			// Add group menu option
+				add_group_tool_option('plugin_name',elgg_echo('groups:enable:plugin_name'),true);
+				elgg_extend_view('groups/left_column', 'plugin_name/groupprofile_plugin_name');    
 			
 		}
 		
@@ -43,11 +51,12 @@
 			global $CONFIG;
 
 			if (get_context() == 'plugin_name') {
-			
+				add_submenu_item(elgg_echo('plugin_name'),$CONFIG->wwwroot."pg/plugin_name/");
+				add_submenu_item(elgg_echo('plugin_name:add'),$CONFIG->wwwroot."pg/plugin_name/edit/");
 			}
 			
 			if (get_context() == 'admin') {
-			
+				add_submenu_item(elgg_echo('plugin_name:admin'),$CONFIG->wwwroot."pg/plugin_name/admin");
 			}
 		}
 		
@@ -68,7 +77,7 @@
 		    				break;
 		    		case 'view':
 		            		set_input('guid', $page[1]);
-		                    include($CONFIG->pluginspath . "plugin_name/edit.php");
+		                    include($CONFIG->pluginspath . "plugin_name/view.php");
 		    				break;				        
 		            default:
 		                    include($CONFIG->pluginspath . "plugin_name/index.php");

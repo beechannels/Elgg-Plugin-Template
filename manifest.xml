@@ -5,5 +5,6 @@
         <field key="description" value="PLUGIN_DESCRIPTION" />
         <field key="website" value="OWNER_WEBSITE" />
         <field key="copyright" value="(C) COPYRIGHT_OWNER DEV_YEAR" />
-	<field key="licence" value="GNU Public License version 2" />
+		<field key="licence" value="GNU Public License version 2" />
+		<field key="elgg_version" value="2010030101" />
 </plugin_manifest>
