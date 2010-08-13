@@ -76,7 +76,7 @@
 	// Success message
 		system_message($successmessage);
 	// add to river
-		add_to_river('river/object/plugin_name/' . $river, $river, get_loggedin_userid(), $entity->guid);
+		add_to_river('river/object/plugin_name_subtype/' . $river, $river, get_loggedin_userid(), $entity->guid);
 	// Remove the entity cache
 		remove_metadata($_SESSION['user']->guid,'plugin_name_title');
 		remove_metadata($_SESSION['user']->guid,'plugin_name_description');

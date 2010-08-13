@@ -23,7 +23,7 @@
 			if ($entity->getSubtype() == "plugin_name_subtype" && $entity->canEdit()) {
 
 			// Delete it!
-					if (($entity->delete()) > 0) {
+					if (($entity->delete()) > 0) {		
 			// Success message
 						system_message(elgg_echo("plugin_name:deleted"));
 					} else {
